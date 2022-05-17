@@ -5,10 +5,16 @@ const express_handlebars = require ('express-handlebars');
 
 const app=express();
 
+//Templates engine
+app.engine("handlebars",handlebars({defaultLayout:'main'}));
+app.set('views engine','handlebars');
+
 //Routes / Templates
-app.get("/", function(req, res){
+app.get("/", function(req,res){
     //res.send("Página Inicial!");
-    res.sendFile(__dirname+"/index.html");
+    //res.sendFile(__dirname+"/index.html");
+    res.render('index');
+    
 });
 
 
