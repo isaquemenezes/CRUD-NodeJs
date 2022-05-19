@@ -1,22 +1,21 @@
-const express = require ('express');
+const express = require('express');
 const body_parser = require ('body-parser');
 const mysql = require ('mysql');
-const express_handlebars = require ('express-handlebars');
+const { engine } = require ('express-handlebars');
 
 const app=express();
 
-//Templates engine
-app.engine("handlebars",handlebars({defaultLayout:'main'}));
-app.set('views engine','handlebars');
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set("views", "./views");
 
-//Routes / Templates
-app.get("/", function(req,res){
-    //res.send("Página Inicial!");
-    //res.sendFile(__dirname+"/index.html");
-    res.render('index');
-    
+app.get('/:id?', function(req, res) {
+    //res.send("Essa é minha página inicial");
+    //res.sendFile(__dirname+"/index.html"); 
+    //res.render('index');
+    //console.log(req.params.id);
+    res.render('index',{id:req.params.id});
 });
-
 
 app.listen(3000, function(req,res){
     console.log('Servidor rodando')
