@@ -69,6 +69,12 @@ app.get('/select/:id?',function(req,res) {
     }
 });
 
+//Rota del
+app.get('/deletar/:id', function(req,res){
+    sql.query("delete from user where id=?",[req.params.id]);
+    res.render('deletar');
+});
+
 //Rota post controllerRegister
 app.post('/controllerRegister',urlEncodeParser,function(req,res){
     //console.log(req.body.name);
