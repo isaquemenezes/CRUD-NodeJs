@@ -21,9 +21,10 @@ app.set('view engine', 'handlebars');
 app.set("views", "./views");
 
 //Link de arquivos externos 1 opção
-//app.use("/css", express.static('css'));
-//app.use("/js", express.static('js'));
-//app.use("/images", express.static('img'));
+app.use("/css", express.static('css'));
+app.use("/js", express.static('js'));
+
+app.use("/images", express.static('images'));
 
 
 app.get('/', function(req, res) {
@@ -34,7 +35,9 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-//Link por rotas
+/*
+** Link por rotas
+
 app.get("/main",function(req,res){
     res.sendFile(__dirname+'/js/main.js');
 });
@@ -42,10 +45,28 @@ app.get("/main",function(req,res){
 app.get("/style",function(req,res){
     res.sendFile(__dirname+'/css/style.css');
 });
+*/
+
+
 
 //Inserir dados
 app.get('/registrar',function(req,res) {
     res.render('registrar');
+});
+
+//Rota Select
+app.get('/select/:id?',function(req,res) {
+    if (req.params.id) 
+    {
+        sql.query("select * from user where id=?",[req.params.id],function(err,results,filelds){
+            res.render('select',{data:results});
+        });
+       
+    } else {
+        sql.query("select * from user order by id asc", function(err,results,filelds){
+            res.render('select',{data:results});
+        });
+    }
 });
 
 //Rota post controllerRegister
