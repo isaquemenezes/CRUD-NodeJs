@@ -42,9 +42,9 @@ app.use("/images", express.static('images'));
 app.get('/', function(req, res) {
     //res.send("Essa é minha página inicial");
     //res.sendFile(__dirname+"/index.html"); 
-    //res.render('index');
+    res.render('index');
     //console.log(req.params.id);
-    res.send('Hi Heroku');  //Teste do heroku 
+    //res.send('Hi Heroku');  //Teste do heroku 
 });
 
 /*
