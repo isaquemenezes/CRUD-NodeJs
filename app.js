@@ -6,7 +6,7 @@ const { application } = require('express');
 
 const urlEncodeParser=body_parser.urlencoded({extended:false});
 
-/*/Off-line
+/*//Off-line
 const sql=mysql.createConnection({
     host:'localhost',
     user:'root',
@@ -30,13 +30,17 @@ const sql=mysql.createPool({
 const app=express();
 
 app.engine('handlebars', engine());
+
+// Definir o motor de visualização para usar, neste caso 
 app.set('view engine', 'handlebars');
-app.set("views", "./views");
+app.set("views", "./views/");
+
+//  Definir o diretório para conter os modelos ('views')
+//app.set('views', path.join(__dirname, 'views/layouts/'));
 
 //Link de arquivos externos 1 opção
 app.use("/css", express.static('css'));
 app.use("/js", express.static('js'));
-
 app.use("/images", express.static('images'));
 
 //Routes and Templates
@@ -61,12 +65,6 @@ app.get("/style",function(req,res){
 */
 
 
-
-//Inserir dados
-app.get('/registrar',function(req,res) {
-    res.render('registrar');
-});
-
 //Rota Select
 app.get('/select/:id?',function(req,res) {
     if (req.params.id) 
@@ -77,9 +75,9 @@ app.get('/select/:id?',function(req,res) {
             });
         });
 
-        /*sql.query("select * from user where id=?",[req.params.id],function(err,results,filelds){
-            res.render('select',{data:results});
-        });*/
+        // sql.query("select * from user where id=?",[req.params.id],function(err,results,filelds){
+        //     res.render('select',{data:results});
+        // });
        
     } else {
         //Config Db Servidor heroku
@@ -89,13 +87,18 @@ app.get('/select/:id?',function(req,res) {
             });
         });
 
-        /*sql.query("select * from user order by id asc", function(err,results,filelds){
-            res.render('select',{data:results});
-        });*/
+        // sql.query("select * from user order by id asc", function(err,results,filelds){
+        //     res.render('select',{data:results});
+        // });
     }
 });
 
-/*
+
+//Inserir dados
+app.get('/registrar',function(req,res) {
+    res.render('registrar');
+});
+
 //Rota del
 app.get('/deletar/:id', function(req,res){
     sql.query("delete from user where id=?",[req.params.id]);
@@ -137,6 +140,8 @@ app.post('/controllerRegister',urlEncodeParser,function(req,res){
     res.render('controllerRegister',{name:req.body.name});
 
 });
+
+/*
 app.listen(port, function(req,res){
     console.log('Servidor rodando')
 });
