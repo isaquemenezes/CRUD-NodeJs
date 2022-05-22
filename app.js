@@ -94,6 +94,7 @@ app.get('/select/:id?',function(req,res) {
     }
 });
 
+/*
 //Rota del
 app.get('/deletar/:id', function(req,res){
     sql.query("delete from user where id=?",[req.params.id]);
@@ -134,8 +135,9 @@ app.post('/controllerRegister',urlEncodeParser,function(req,res){
             ]);
     res.render('controllerRegister',{name:req.body.name});
 
-})
+});
 
+*/
 app.listen(port, function(req,res){
     console.log('Servidor rodando')
 });
