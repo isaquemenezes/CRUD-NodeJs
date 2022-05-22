@@ -22,7 +22,7 @@ const sql=mysql.createPool({
 });
 
 //Port Pro heroku
-let port=process.env.PORT || 3000;
+//let port=process.env.PORT || 3000;
 
 //sql.query("use nodejs");
 
@@ -138,6 +138,6 @@ app.post('/controllerRegister',urlEncodeParser,function(req,res){
 });
 
 */
-app.listen(port, function(req,res){
+app.listen(3000, function(req,res){
     console.log('Servidor rodando')
 });
