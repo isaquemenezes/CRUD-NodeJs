@@ -7,6 +7,10 @@
     text-decoration: none;
 
 }
+body {
+    width: 120vh;
+}
+
 h1 {
     color: darkorange;
     width: 100%;
@@ -81,6 +85,56 @@ nav ul{
     justify-content: space-between;
     align-items: center;
 }
+
+.__form {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: auto;
+    border:2px solid #333;
+    border-radius: .5rem;
+    margin: auto;
+}
+
+.__form form {
+    width: 550px;
+    margin: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    
+}
+
+.__form form input {
+    width: 100%;
+    margin: .5rem;
+    border-radius: .5rem;
+    height: 40px;
+    border:1px solid yellowgreen
+}
+
+.__form form input[type="submit"] {
+   
+    font-size: 15px;
+    width: 20%;
+    color: #333;
+    background: transparent;
+    cursor: pointer;
+    border:2px solid #0005d3;
+}
+
+.__form form input[type="submit"]:hover {
+    transition: 1s ease-out;
+    background: #255;
+    cursor: pointer;
+    color: #fff;
+}
+
+
+
+
 
 
 

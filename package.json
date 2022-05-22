@@ -11,5 +11,24 @@
   },
   "devDependencies": {
     "sequelize-cli": "^6.4.1"
-  }
+  },
+  
+  "name": "crud-nodejs",
+  "description": "1. npm install --save express\r 2. npm install --save nodemon\r 3. npm install --save mysql\r 4. npm install --save body-parser\r 5. npm install --save express-handlebars",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaquemenezes/CRUD-NodeJs.git"
+  },
+  "author": "Isaque Menezes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/isaquemenezes/CRUD-NodeJs/issues"
+  },
+  "homepage": "https://github.com/isaquemenezes/CRUD-NodeJs#readme"
 }

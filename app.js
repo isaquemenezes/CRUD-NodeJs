@@ -6,14 +6,22 @@ const { application } = require('express');
 
 const urlEncodeParser=body_parser.urlencoded({extended:false});
 
+/*/Off-line
 const sql=mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'',
     port:3306
+});*/
+
+const sql=mysql.createPool({
+    host:'us-cdbr-east-05.cleardb.net',
+    user:'b0ddc482081a83',
+    password:'77014741',
+    database:'heroku_d39c5f2392c5997'
 });
 
-sql.query("use nodejs");
+//sql.query("use nodejs");
 
 const app=express();
 
@@ -59,14 +67,27 @@ app.get('/registrar',function(req,res) {
 app.get('/select/:id?',function(req,res) {
     if (req.params.id) 
     {
-        sql.query("select * from user where id=?",[req.params.id],function(err,results,filelds){
-            res.render('select',{data:results});
+        sql.getConnection(function(err,connection){
+            connection.query("select * from user where id=?",[req.params.id],function(err,results,filelds){
+                res.render('select',{data:results});
+            });
         });
+
+        /*sql.query("select * from user where id=?",[req.params.id],function(err,results,filelds){
+            res.render('select',{data:results});
+        });*/
        
     } else {
-        sql.query("select * from user order by id asc", function(err,results,filelds){
-            res.render('select',{data:results});
+        //Config Db Servidor heroku
+        sql.getConnection(function(err,connection){
+            connection.query("select * from user order by id asc", function(err,results,filelds){
+                res.render('select',{data:results});
+            });
         });
+
+        /*sql.query("select * from user order by id asc", function(err,results,filelds){
+            res.render('select',{data:results});
+        });*/
     }
 });
 
