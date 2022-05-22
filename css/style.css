@@ -33,7 +33,7 @@ table {
     border-color: aliceblue;
 }
 
-table tr:first-child {
+table thead tr:first-child {
     background: #333;
     color: #fff;
     font-weight: bold;
@@ -48,7 +48,7 @@ tfoot tr td {
     position: absolute;
     width: 100%; 
     text-align: center;
-    background: #333;
+    background: yellow;
     margin-top: 1rem;
 }
 header {

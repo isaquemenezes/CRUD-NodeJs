@@ -12,6 +12,7 @@ const sql=mysql.createConnection({
     password:'',
     port:3306
 });
+
 sql.query("use nodejs");
 
 const app=express();
@@ -74,6 +75,28 @@ app.get('/deletar/:id', function(req,res){
     sql.query("delete from user where id=?",[req.params.id]);
     res.render('deletar');
 });
+
+//Rota Update
+app.get('/update/:id',urlEncodeParser, function(req,res){
+    sql.query("select * from user where id=?",
+            [req.params.id], function(err,results,fields){
+                res.render('update',{
+                    id:req.params.id, 
+                    name:results[0].name, 
+                    age:results[0].age
+        });
+    });
+    
+});
+
+app.post('/controllerEdit',urlEncodeParser,function(req,res){
+    sql.query("update user set name=?,age=? where id=?",[
+        req.body.name,
+        req.body.age,
+        req.body.id
+    ]);
+    res.render('controllerEdit');
+})
 
 //Rota post controllerRegister
 app.post('/controllerRegister',urlEncodeParser,function(req,res){
