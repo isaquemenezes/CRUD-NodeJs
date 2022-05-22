@@ -18,11 +18,12 @@ const sql=mysql.createPool({
     host:'us-cdbr-east-05.cleardb.net',
     user:'b0ddc482081a83',
     password:'77014741',
-    database:'heroku_d39c5f2392c5997'
+    database:'heroku_d39c5f2392c5997',
+    port:3306
 });
 
 //Port Pro heroku
-//let port=process.env.PORT || 3000;
+let port=process.env.PORT || 3000;
 
 //sql.query("use nodejs");
 
@@ -138,6 +139,6 @@ app.post('/controllerRegister',urlEncodeParser,function(req,res){
 });
 
 */
-app.listen(3000, function(req,res){
+app.listen(port, function(req,res){
     console.log('Servidor rodando')
 });
