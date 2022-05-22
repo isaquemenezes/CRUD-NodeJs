@@ -21,6 +21,9 @@ const sql=mysql.createPool({
     database:'heroku_d39c5f2392c5997'
 });
 
+//Port Pro heroku
+let port=process.env.PORT || 3000;
+
 //sql.query("use nodejs");
 
 const app=express();
@@ -35,13 +38,13 @@ app.use("/js", express.static('js'));
 
 app.use("/images", express.static('images'));
 
-
+//Routes and Templates
 app.get('/', function(req, res) {
     //res.send("Essa é minha página inicial");
     //res.sendFile(__dirname+"/index.html"); 
     //res.render('index');
     //console.log(req.params.id);
-    res.render('index');
+    res.send('Hi Heroku');  //Teste do heroku 
 });
 
 /*
@@ -133,6 +136,6 @@ app.post('/controllerRegister',urlEncodeParser,function(req,res){
 
 })
 
-app.listen(3000, function(req,res){
+app.listen(port, function(req,res){
     console.log('Servidor rodando')
 });
