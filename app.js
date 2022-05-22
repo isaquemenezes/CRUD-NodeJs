@@ -23,7 +23,7 @@ const sql=mysql.createPool({
 });
 
 //Port Pro heroku
-const PORT=process.env.PORT || 3000;
+const PORT=process.env.PORT || 30005;
 
 //sql.query("use nodejs");
 
